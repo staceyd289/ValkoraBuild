@@ -132,6 +132,10 @@
 
         portfolioIsotope.isotope({filter: $(this).data('filter')});
     });
+
+
+
+    
     
 })(jQuery);
 
