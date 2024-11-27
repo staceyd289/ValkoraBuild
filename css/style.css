@@ -21,6 +21,12 @@ a {
     color: #666666;
     transition: .3s;
 }
+button{
+    border: none;
+    background: white;
+  padding: 10px;
+  
+}
 
 a:hover,
 a:active,
