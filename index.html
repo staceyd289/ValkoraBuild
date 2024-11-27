@@ -242,7 +242,7 @@
                         <div class="col-lg-7 col-md-6">
                             <div class="section-header text-left">
                                 <p>Welcome to ValkoraBuild</p>
-                                <h2>25 Years Experience</h2>
+                                <h2>10 Years Experience</h2>
                             </div>
                             <div class="about-text">
                                 <p>
@@ -958,5 +958,30 @@ Sustainability isn’t just a trend—it’s a necessity. By using eco-friendly 
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyC58ctzPH31biuCWwsXqHBdt8uQETtrppw",
+    authDomain: "https://valkorabuild.vercel.app/",
+    projectId: "valkorabuild"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+  function signInWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+      .then((result) => {
+        const user = result.user;
+        console.log("User:", user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+</script>
+<button onclick="signInWithGoogle()">Continue with Google</button>
+
     </body>
 </html>
