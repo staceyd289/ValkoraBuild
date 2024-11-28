@@ -113,9 +113,12 @@
                                 </div>
                                 <a href="contact.html" class="nav-item nav-link active">Contact</a>
                             </div>
-                            <div class="ml-auto">
+                            <i class="fas fa-goggle"></i>
+                            <button onclick="signIn()">Continue with Google</button>
+
+                            <!-- <div class="ml-auto">
                                 <a class="btn" href="">Download All Template</a>
-                            </div>
+                            </div> -->
                         </div>
                     </nav>
                 </div>
@@ -306,5 +309,62 @@
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
+
+        
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+  
+    // Your Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC58ctzPH31biuCWwsXqHBdt8uQETtrppw",
+      authDomain: "valkorabuild.firebaseapp.com",
+      projectId: "valkorabuild",
+      storageBucket: "valkorabuild.firebasestorage.app",
+      messagingSenderId: "425972148245",
+      appId: "1:425972148245:web:fe57163bf2d97da7a2461c",
+      measurementId: "G-L76EFZVZ1L"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+  
+    // Define signIn function globally
+    window.signIn = async function() {
+      const provider = new GoogleAuthProvider();
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        console.log("User:", user);
+      } catch (error) {
+        console.error("Error during sign-in:", error);
+      }
+    };
+  </script>
+  
+<!-- 
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyC58ctzPH31biuCWwsXqHBdt8uQETtrppw",
+    authDomain: "https://valkorabuild.vercel.app/",
+    projectId: "valkorabuild"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+  function signInWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+      .then((result) => {
+        const user = result.user;
+        console.log("User:", user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+</script> -->
+
+
     </body>
 </html>

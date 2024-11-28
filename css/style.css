@@ -25,7 +25,13 @@ button{
     border: none;
     background: white;
   padding: 10px;
+  border-radius: 30px;
   
+}
+
+button:hover{
+    background: #fdbe33;
+    transition: 300ms all ease-in;
 }
 
 a:hover,
