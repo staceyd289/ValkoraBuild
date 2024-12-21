@@ -36,7 +36,20 @@
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
-     
+        <style>
+            #navbar {
+              display: flex;
+              justify-content: space-between;
+              padding: 10px;
+              color: white;
+            }
+            #user-icon {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              display: none; /* Initially hidden */
+            }
+          </style>
     </head>
 
     <body>
@@ -122,7 +135,10 @@
                                 <a href="contact.html" class="nav-item nav-link">Contact</a>
                             </div>
                            <i class="fas fa-goggle"></i>
+                           <div id="navbar">
                             <button onclick="signIn()">Continue with Google</button>
+                            <img id="user-icon" src="" alt="User Icon">
+                          </div>
 
                             <!-- <div class="ml-auto">
                                 <a class="btn" href="">Login/Register</a>
@@ -999,6 +1015,16 @@ Sustainability isn’t just a trend—it’s a necessity. By using eco-friendly 
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
         console.log("User:", user);
+            // Display user icon in the navbar
+            if (user) {
+          const navbar = document.getElementById("navbar");
+          const userIcon = document.getElementById("user-icon");
+
+          // Update the user icon
+          userIcon.src = user.photoURL;
+          userIcon.alt = user.displayName;
+          userIcon.style.display = "block";
+        }
       } catch (error) {
         console.error("Error during sign-in:", error);
       }
