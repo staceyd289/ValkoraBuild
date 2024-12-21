@@ -37,18 +37,31 @@
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
         <style>
-            #navbar {
-              display: flex;
-              justify-content: space-between;
-              padding: 10px;
-              color: white;
-            }
-            #user-icon {
-              width: 40px;
-              height: 40px;
-              border-radius: 50%;
-              display: none; /* Initially hidden */
-            }
+              #navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+    }
+    #sign-in-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #sign-in-button:hover {
+      background-color: #45a049;
+    }
+    #user-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: none; /* Initially hidden */
+    }
           </style>
     </head>
 
@@ -136,7 +149,7 @@
                             </div>
                            <i class="fas fa-goggle"></i>
                            <div id="navbar">
-                            <button onclick="signIn()">Continue with Google</button>
+                            <button id="sign-in-button" onclick="signIn()">Continue with Google</button>
                             <img id="user-icon" src="" alt="User Icon">
                           </div>
 
@@ -1015,15 +1028,18 @@ Sustainability isn’t just a trend—it’s a necessity. By using eco-friendly 
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
         console.log("User:", user);
-            // Display user icon in the navbar
-            if (user) {
-          const navbar = document.getElementById("navbar");
+        // Display user icon and hide the Sign In button
+        if (user) {
           const userIcon = document.getElementById("user-icon");
+          const signInButton = document.getElementById("sign-in-button");
 
           // Update the user icon
           userIcon.src = user.photoURL;
           userIcon.alt = user.displayName;
           userIcon.style.display = "block";
+
+          // Hide the Sign In button
+          signInButton.style.display = "none";
         }
       } catch (error) {
         console.error("Error during sign-in:", error);
